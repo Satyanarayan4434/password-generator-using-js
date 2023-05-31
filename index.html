@@ -19,7 +19,8 @@
         <h1 class="topHeading">PASSWORD GENERATOR</h1>
         <div class="inputField">
             <input class="mainInputField" id="mainInputField" placeholder="PASSWORD" readonly>
-            <img class="inputFieldImg" src="./assets/copy.svg" alt="">
+            <img class="inputFieldImg" id="copyBtn" onclick="copyMsgBtn()" src="./assets/copy.svg" alt="">
+            <span class="tooltip" id="copyMsg"></span>
         </div>
         <div class="inputContainer">
             <div class="displayLength">
@@ -45,7 +46,7 @@
             </div>
             <div class="passwordStrength">
                 <p>Password Strength</p>
-                <div class="checkPasswordStrength" id="checkPasswordStrength"></div>
+                <div class="checkPasswordStrength" id="checkPasswordStrength1"></div>
             </div>
             <button class="generateButton" id="generateButton">GENERATE PASSWORD</button>
         </div>

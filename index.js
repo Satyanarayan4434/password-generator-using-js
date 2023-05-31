@@ -1,10 +1,13 @@
 let passwordLengthSlider = document.getElementById('passwordLengthSlider');
 let passwordLength = document.getElementById('passwordLength');
-
+let mainInputField = document.getElementById('mainInputField');
 let uppercaseCheckBox = document.getElementById('uppercaseCheckBox');
 let lowercaseCheckBox = document.getElementById('lowercaseCheckBox');
 let numberCheckBox = document.getElementById('numberCheckBox');
 let symbolCheckBox = document.getElementById('symbolCheckBox');
+let copyBtn = document.getElementById('copyBtn');
+let copyMsg = document.getElementById('copyMsg');
+
 
 
 
@@ -66,35 +69,6 @@ function countCheckBox(){
       return count; 
 }
 
-//create function for set color of the password indicator
-let checkPasswordStrength = document.getElementById('checkPasswordStrength');
-function setIndicator(color){
-    checkPasswordStrength.style.backgroundColor = color;
-};
-
-//create function to calculate strength of the function
-function calCstrenth(){
-    let hasUpperCase = false;
-    let hasLowerCase = false;
-    let hasNumber = false;
-    let hasSymbol = false;
-
-    if(uppercaseCheckBox.checked) hasUpperCase = true;
-    if(lowercaseCheckBox.checked) hasLowerCase = true;
-    if(numberCheckBox.checked) hasNumber = true;
-    if(symbolCheckBox.checked) hasSymbol = true;
-
-    if(hasUpperCase && hasLowerCase && (hasNumber || hasSymbol) && setPasswordLength>=8){
-        setIndicator('#0f0');
-    }
-    else if((hasUpperCase||hasLowerCase)&&(hasNumber||hasSymbol)&& setPasswordLength>=6){
-        setIndicator('#0ff');
-    }
-    else{
-        setIndicator('#ff0')
-    }
-};
-
 //create a function to generate password
 let password = "";
 let generateButton = document.getElementById('generateButton');
@@ -120,7 +94,43 @@ generateButton.addEventListener('click',()=>{
     for(let i=0; i<funcArr.length; i++){
         password = password+funcArr[i]();
     }
-    console.log(password);
+    
+    for(let i=0; i<passwordLengthSlider.value-funcArr.length; i++) {
+        let randIndex = setRndInteger(0 , funcArr.length);
+        password += funcArr[randIndex]();
+    }
+    if(uppercaseCheckBox.checked && lowercaseCheckBox.checked && (numberCheckBox.checked || symbolCheckBox.checked) && passwordLengthSlider.value>=8){
+        checkPasswordStrength.classList.add('activeCheckPassword1');
+    }
+    else{
+        checkPasswordStrength.classList.remove('activeCheckPassword1');
+    }
+    if((uppercaseCheckBox.checked || lowercaseCheckBox.checked) && (numberCheckBox.checked || symbolCheckBox.checked) && passwordLengthSlider.value>=6){
+        checkPasswordStrength.classList.add("activeCheckPassword2");
+    }
+    else{
+        checkPasswordStrength.classList.remove('activeCheckPassword2');
+    }
+    if(passwordLengthSlider.value<6){
+        checkPasswordStrength.classList.add("activeCheckPassword3");
+    }
+    else{
+        checkPasswordStrength.classList.remove('activeCheckPassword3');
+    }
+    mainInputField.value = password;
     
 });
-
+    
+async function copyMsgBtn(){
+   try{
+    await navigator.clipboard.writeText(mainInputField.value);
+    copyMsg.innerText = "copied!";
+   }
+   catch(e){
+        copyMsg.innerText = "Failed:(";
+   }
+   copyMsg.classList.add("activeTooltip");
+   setTimeout(()=>{
+    copyMsg.classList.remove("activeTooltip");
+   },2000)
+}

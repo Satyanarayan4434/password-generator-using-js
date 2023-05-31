@@ -67,6 +67,28 @@ body{
     top: 40%;
     right: 1rem;
 }
+.tooltip{
+    position: absolute;
+    right: -30%;
+    top: 40%;
+    height: 2rem;
+    width: 6rem;
+    background-color: #D9AFD9;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px black;
+    transform: scale(0);
+}
+.activeTooltip{
+    transform: scale(1);
+}
 .inputContainer{
     margin-top: 1rem;
     padding: 13px; 
@@ -79,6 +101,7 @@ body{
     color: white;
     display: flex;
     flex-direction: column;
+    
 }
 .displayLength{
     display: flex;
@@ -153,6 +176,16 @@ body{
     width: 20px;
     border: none;
     border-radius: 50%;
+    background-color: aliceblue;
+}
+.activeCheckPassword1{
+    background-color: #10f55c;
+}
+.activeCheckPassword2{
+    background-color: #f8f402;
+}
+.activeCheckPassword3{
+    background-color: #770b0b;
 }
 .generateButton{
     width: 100%;
