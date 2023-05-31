@@ -17,7 +17,8 @@ let setPasswordLength = 10;
 //UI change
 function getPasswordLength(){
     passwordLengthSlider.value = setPasswordLength;
-   passwordLength.innerText = setPasswordLength;
+    passwordLength.innerText = setPasswordLength;
+    
 }
 getPasswordLength();
 
@@ -69,6 +70,40 @@ function countCheckBox(){
       return count; 
 }
 
+//create function for set color of the password indicator
+let checkPasswordStrength = document.getElementById('checkPasswordStrength1');
+
+if(uppercaseCheckBox.checked){
+    
+}
+// function setIndicator(color){
+//     checkPasswordStrength.style.backgroundColor = color;
+//     console.log("hi");
+// };
+
+// //create function to calculate strength of the function
+// function calCstrenth(){
+//     let hasUpperCase = false;
+//     let hasLowerCase = false;
+//     let hasNumber = false;
+//     let hasSymbol = false;
+
+//     if(uppercaseCheckBox.checked) hasUpperCase = true;
+//     if(lowercaseCheckBox.checked) hasLowerCase = true;
+//     if(numberCheckBox.checked) hasNumber = true;
+//     if(symbolCheckBox.checked) hasSymbol = true;
+
+//     if(hasUpperCase && hasLowerCase && (hasNumber || hasSymbol) && setPasswordLength>=8){
+//         setIndicator('green');
+//     }
+//     else if((hasUpperCase||hasLowerCase)&&(hasNumber||hasSymbol)&& setPasswordLength>=6){
+//         setIndicator('#0ff');
+//     }
+//     else{
+//         setIndicator('#ff0')
+//     }
+// };
+
 //create a function to generate password
 let password = "";
 let generateButton = document.getElementById('generateButton');
@@ -99,19 +134,19 @@ generateButton.addEventListener('click',()=>{
         let randIndex = setRndInteger(0 , funcArr.length);
         password += funcArr[randIndex]();
     }
-    if(uppercaseCheckBox.checked && lowercaseCheckBox.checked && (numberCheckBox.checked || symbolCheckBox.checked) && passwordLengthSlider.value>=8){
+    if(passwordLengthSlider.value>=10){
         checkPasswordStrength.classList.add('activeCheckPassword1');
     }
     else{
         checkPasswordStrength.classList.remove('activeCheckPassword1');
     }
-    if((uppercaseCheckBox.checked || lowercaseCheckBox.checked) && (numberCheckBox.checked || symbolCheckBox.checked) && passwordLengthSlider.value>=6){
+    if(passwordLengthSlider.value>=7 && passwordLengthSlider.value<=9){
         checkPasswordStrength.classList.add("activeCheckPassword2");
     }
     else{
         checkPasswordStrength.classList.remove('activeCheckPassword2');
     }
-    if(passwordLengthSlider.value<6){
+    if(passwordLengthSlider.value<=6){
         checkPasswordStrength.classList.add("activeCheckPassword3");
     }
     else{
