@@ -1,0 +1,175 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+:root {
+
+    --dk-violet: hsl(268, 75%, 9%);
+    --lt-violet: hsl(268, 47%, 21%);
+    --lt-violet2: hsl(281, 89%, 26%);
+    --vb-violet: hsl(285, 91%, 52%);
+    --vb-violet2: hsl(290, 70%, 36%);
+  
+    --vb-yellow: hsl(52, 100%, 62%);
+  
+  
+    --pl-white: hsl(0, 0%, 100%);
+  
+    --vb-cyan: hsl(176, 100%, 44%);
+    --vb-cyan2: hsl(177, 92%, 70%);
+    --dk-text: hsl(198, 20%, 13%);
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #D9AFD9;
+    background-image: linear-gradient( 111.4deg,  rgba(7,7,9,1) 6.5%, rgba(27,24,113,1) 93.2% );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topHeading{
+    color: white;
+}
+.inputField{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.mainInputField{
+    margin-top: 1rem;
+    height: 4rem;
+    width: 21.2rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: x-large;
+    background-image: linear-gradient( 109.6deg,  rgba(61,131,97,1) 11.2%, rgba(28,103,88,1) 91.1% );
+    color: white;
+}
+.mainInputField::placeholder {
+    position:absolute;
+    top: 50%;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    line-height:30px;
+    color:white;
+    opacity: 0.65;
+    transform: translateY(-50%);
+}
+.inputFieldImg{
+    width: 2em;
+    position: absolute;
+    top: 40%;
+    right: 1rem;
+}
+.inputContainer{
+    margin-top: 1rem;
+    padding: 13px; 
+    width: 21.2rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: x-large;
+    background-image: linear-gradient( 109.6deg,  rgba(61,131,97,1) 11.2%, rgba(28,103,88,1) 91.1% );
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.displayLength{
+    display: flex;
+    justify-content: space-between;
+}
+.slider{
+    appearance: none;
+    height: 0.75rem;
+    cursor: pointer;
+    background-color: var(--lt-violet);
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    background-image: linear-gradient(var(--vb-violet), var(--vb-violet));
+    background-repeat: no-repeat;
+    border:none;
+    outline:none;
+}
+
+.slider::-webkit-slider-thumb {
+    position:relative;
+    appearance: none;
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    background-color: var(--vb-yellow);
+    cursor:pointer;
+    margin-top: -3px;
+    box-shadow: 0px 0px 20px 0px rgba(255, 229, 61, 0.50);
+    transition: all 100ms ease-in;
+}
+
+.slider::-webkit-slider-thumb:hover{
+    outline: 2px solid var(--vb-yellow);
+    background-color: var(--dk-violet);
+    box-shadow: 0px 0px 25px 5px rgba(255, 229, 61, 0.80);
+}
+.check{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 0 1rem;
+}
+.check input{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border: 1px solid var(--vb-cyan);
+    cursor: pointer;
+    position: relative;
+    border-radius: 0.35rem;
+    background-color: #f3ecf3;
+}
+.check input:checked::before {
+    content: '✔';
+    position: absolute;
+    color: var(--dk-text);
+    font-size:1.05rem;
+    font-weight: 600;
+    left:50%;
+    top:-2px;
+    transform: translateX(-50%)  translateY(5%);
+}
+.passwordStrength{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-size: large;
+}
+.checkPasswordStrength{
+    height: 20px;
+    width: 20px;
+    border: none;
+    border-radius: 50%;
+}
+.generateButton{
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: x-large;
+    font-weight: bold;
+    color: rgb(73, 3, 42);
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(249,232,51,1) 0%, rgba(250,196,59,1) 100.2% );
+   
+}
+.generateButton:hover{
+    box-shadow: 0px 5px 5px black;
+    transition: all;
+    transition-delay: 0.1s;
+}
+
