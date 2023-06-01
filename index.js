@@ -18,7 +18,9 @@ let setPasswordLength = 10;
 function getPasswordLength(){
     passwordLengthSlider.value = setPasswordLength;
     passwordLength.innerText = setPasswordLength;
-    
+    const min =  passwordLengthSlider.min;
+    const max =  passwordLengthSlider.max;
+    passwordLengthSlider.style.backgroundSize = ( (setPasswordLength - min)*100/(max - min)) + "% 100%"   
 }
 getPasswordLength();
 
@@ -76,37 +78,26 @@ let checkPasswordStrength = document.getElementById('checkPasswordStrength1');
 if(uppercaseCheckBox.checked){
     
 }
-// function setIndicator(color){
-//     checkPasswordStrength.style.backgroundColor = color;
-//     console.log("hi");
-// };
-
-// //create function to calculate strength of the function
-// function calCstrenth(){
-//     let hasUpperCase = false;
-//     let hasLowerCase = false;
-//     let hasNumber = false;
-//     let hasSymbol = false;
-
-//     if(uppercaseCheckBox.checked) hasUpperCase = true;
-//     if(lowercaseCheckBox.checked) hasLowerCase = true;
-//     if(numberCheckBox.checked) hasNumber = true;
-//     if(symbolCheckBox.checked) hasSymbol = true;
-
-//     if(hasUpperCase && hasLowerCase && (hasNumber || hasSymbol) && setPasswordLength>=8){
-//         setIndicator('green');
-//     }
-//     else if((hasUpperCase||hasLowerCase)&&(hasNumber||hasSymbol)&& setPasswordLength>=6){
-//         setIndicator('#0ff');
-//     }
-//     else{
-//         setIndicator('#ff0')
-//     }
-// };
 
 //create a function to generate password
 let password = "";
 let generateButton = document.getElementById('generateButton');
+
+function shufflePassword(array) {
+    //Fisher Yates Method
+    for (let i = array.length - 1; i > 0; i--) {
+        //random J, find out using random function
+        const j = Math.floor(Math.random() * (i + 1));
+        //swap number at i index and j index
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+    let str = "";
+    array.forEach((el) => (str += el));
+    return str;
+}
+
 generateButton.addEventListener('click',()=>{ 
     if(countCheckBox()==0)
     return;
@@ -152,6 +143,7 @@ generateButton.addEventListener('click',()=>{
     else{
         checkPasswordStrength.classList.remove('activeCheckPassword3');
     }
+    password = shufflePassword(Array.from(password));
     mainInputField.value = password;
     
 });
